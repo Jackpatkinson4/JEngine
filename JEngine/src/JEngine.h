@@ -4,7 +4,7 @@
 
 #include "JEngine/Core.h"
 #include "JEngine/Application.h"
-#include <stdio.h>
+#include "JEngine/Log.h"
 
 // ----- Entry Point -----
 #include "JEngine/EntryPoint.h"
