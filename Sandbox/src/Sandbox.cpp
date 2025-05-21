@@ -9,12 +9,21 @@ public:
 
 	void OnUpdate() override
 	{;
-		JE_INFO("ExampleLayer::Update");
+		if (JEngine::Input::IsKeyPressed(JE_KEY_TAB))
+			JE_TRACE("Tab key is pressed! (poll)");
 	}
 
 	void OnEvent(JEngine::Event& event) override
 	{
-		JE_TRACE("{0}", event);
+		if (event.GetEventType() == JEngine::EventType::KeyPressed)
+		{
+			JEngine::KeyPressedEvent& e = (JEngine::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == JE_KEY_TAB)
+			{
+				JE_TRACE("Tab key is pressed! (event)");
+			}
+			JE_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 
