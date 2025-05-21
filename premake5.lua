@@ -17,8 +17,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "JEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "JEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "JEngine/vendor/imgui"
 
 include "JEngine/vendor/GLFW"
+include "JEngine/vendor/Glad"
+include "JEngine/vendor/imgui"
 
 project "JEngine"
 	location "JEngine"
@@ -36,7 +40,7 @@ project "JEngine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
 	}
 
 
@@ -44,12 +48,16 @@ project "JEngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib",
 		"dwmapi.lib"
 	}
@@ -62,7 +70,8 @@ project "JEngine"
 		defines
 		{
 			"JE_PLATFORM_WINDOWS",
-			"JE_BUILD_DLL"
+			"JE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands 
@@ -74,14 +83,17 @@ project "JEngine"
 
 	filter "configurations:Debug"
 		defines "JE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "JE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Release"
 		defines "JE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -121,12 +133,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "JE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "JE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Release"
 		defines "JE_DIST"
+		buildoptions "/MD"
 		optimize "On"
