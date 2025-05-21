@@ -1,14 +1,22 @@
 #pragma once
 
 #ifdef JE_PLATFORM_WINDOWS
-	#ifdef JE_BUILD_DLL
-		#define JE_API __declspec(dllexport)
+	#if JE_DYNAMIC_LINK
+		#ifdef JE_BUILD_DLL
+			#define JE_API __declspec(dllexport)
+		#else
+			#define JE_API __declspec(dllimport)
+		#endif
 	#else
-		#define JE_API __declspec(dllimport)
+		#define JE_API
 	#endif
 #else
 	#error JEngine currently only supports Windows.
 #endif
+
+//#ifdef JE_DEBUG
+//	#define JE_ENABLE_ASSERTS
+//#endif
 
 #ifdef JE_ENABLE_ASSERTS
 	#define JE_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

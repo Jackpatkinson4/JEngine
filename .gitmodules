@@ -7,3 +7,6 @@
 [submodule "JEngine/vendor/imgui"]
 	path = JEngine/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "JEngine/vendor/glm"]
+	path = JEngine/vendor/glm
+	url = https://github.com/g-truc/glm

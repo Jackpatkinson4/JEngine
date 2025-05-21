@@ -19,6 +19,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "JEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "JEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "JEngine/vendor/imgui"
+IncludeDir["glm"] = "JEngine/vendor/glm"
 
 include "JEngine/vendor/GLFW"
 include "JEngine/vendor/Glad"
@@ -26,8 +27,11 @@ include "JEngine/vendor/imgui"
 
 project "JEngine"
 	location "JEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
 	characterset("Unicode")
 	buildoptions "/utf-8"
 
@@ -41,8 +45,15 @@ project "JEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/**.hpp",
+		"%{prj.name}/vendor/glm/**.inl",
 	}
 
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 
 	includedirs
 	{
@@ -51,6 +62,7 @@ project "JEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -63,43 +75,37 @@ project "JEngine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
 		{
 			"JE_PLATFORM_WINDOWS",
 			"JE_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands 
-		{
-			("{RMDIR} ../bin/" .. outputdir .. "/Sandbox"),
-			("{MKDIR} ../bin/" .. outputdir .. "/Sandbox"),
-			("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			"GLFW_INCLUDE_NONE",
 		}
 
 	filter "configurations:Debug"
 		defines "JE_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "JE_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Release"
 		defines "JE_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
 	characterset("Unicode")
 	buildoptions "/utf-8"
 
@@ -116,7 +122,9 @@ project "Sandbox"
 	includedirs
 	{
 		"JEngine/vendor/spdlog/include",
-		"JEngine/src"
+		"JEngine/src",
+		"JEngine/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -125,23 +133,25 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
-		defines "JE_PLATFORM_WINDOWS"
+		defines 
+		{
+			"JE_PLATFORM_WINDOWS",
+			"IMGUI_API=__declspec(dllimport)"
+		}
 
 	filter "configurations:Debug"
 		defines "JE_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "JE_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Release"
 		defines "JE_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"

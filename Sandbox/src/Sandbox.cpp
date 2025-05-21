@@ -1,5 +1,7 @@
 #include <JEngine.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public JEngine::Layer
 {
 public:
@@ -11,6 +13,13 @@ public:
 	{;
 		if (JEngine::Input::IsKeyPressed(JE_KEY_TAB))
 			JE_TRACE("Tab key is pressed! (poll)");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(JEngine::Event& event) override
@@ -33,7 +42,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new JEngine::ImGuiLayer());
 	}
 
 	~Sandbox()
