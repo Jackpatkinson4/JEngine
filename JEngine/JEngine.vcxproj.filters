@@ -4,6 +4,15 @@
     <Filter Include="JEngine">
       <UniqueIdentifier>{45F009ED-B1CF-8888-BAE7-135F2646EFE9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="JEngine\Events">
+      <UniqueIdentifier>{89FCAFF9-75CA-A3FF-5E5E-14264ACB7F64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\JEngine.h" />
@@ -16,9 +25,28 @@
     <ClInclude Include="src\JEngine\EntryPoint.h">
       <Filter>JEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\JEngine\Events\ApplicationEvent.h">
+      <Filter>JEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Events\Event.h">
+      <Filter>JEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Events\KeyEvent.h">
+      <Filter>JEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Events\MouseEvent.h">
+      <Filter>JEngine\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\JEngine\Log.h">
       <Filter>JEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\JEngine\Window.h">
+      <Filter>JEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\jepch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\JEngine\Application.cpp">
@@ -27,5 +55,9 @@
     <ClCompile Include="src\JEngine\Log.cpp">
       <Filter>JEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\jepch.cpp" />
   </ItemGroup>
 </Project>

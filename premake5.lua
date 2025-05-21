@@ -3,6 +3,8 @@ workspace "JEngine"
 
 	startproject "Sandbox"
 
+	staticruntime "On"
+
 	configurations
 	{
 		"Debug",
@@ -11,6 +13,12 @@ workspace "JEngine"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "JEngine/vendor/GLFW/include"
+
+include "JEngine/vendor/GLFW"
 
 project "JEngine"
 	location "JEngine"
@@ -22,6 +30,9 @@ project "JEngine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "jepch.h"
+	pchsource "JEngine/src/jepch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -31,7 +42,16 @@ project "JEngine"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib",
+		"dwmapi.lib"
 	}
 
 	filter "system:windows"
