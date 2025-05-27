@@ -140,7 +140,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\JEngine\Core\Timestep.h" />
     <ClInclude Include="src\JEngine\Renderer\Buffer.h" />
+    <ClInclude Include="src\JEngine\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\JEngine\Renderer\RenderCommand.h" />
     <ClInclude Include="src\JEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\JEngine\Renderer\RendererAPI.h" />
@@ -166,6 +168,7 @@
     <ClInclude Include="src\JEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\JEngine\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -591,6 +594,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\JEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\JEngine\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\JEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\JEngine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\JEngine\Renderer\RendererAPI.cpp" />
@@ -605,6 +609,7 @@
     <ClCompile Include="src\JEngine\LayerStack.cpp" />
     <ClCompile Include="src\JEngine\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGlShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

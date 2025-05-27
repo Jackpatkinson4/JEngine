@@ -7,11 +7,9 @@
 #include "JEngine/Events/Event.h"
 #include "JEngine/Events/ApplicationEvent.h"
 
-#include "JEngine/ImGui/ImGuiLayer.h"
+#include "JEngine/Core/Timestep.h"
 
-#include "JEngine/Renderer/Shader.h"
-#include "JEngine/Renderer/Buffer.h"
-#include "JEngine/Renderer/VertexArray.h"
+#include "JEngine/ImGui/ImGuiLayer.h"
 
 namespace JEngine {
 
@@ -33,19 +31,13 @@ namespace JEngine {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
-		std::unique_ptr<Window> m_Window;
+	private:
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
-
-		std::shared_ptr<Shader> m_Shader2;
-		std::shared_ptr<VertexArray> m_SquareVA;
+		Timestep m_Timestep;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
