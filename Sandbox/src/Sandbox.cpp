@@ -42,18 +42,19 @@ public:
 
 		m_SquareVA.reset(JEngine::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		JEngine::Ref<JEngine::VertexBuffer> squareVB;
 		squareVB.reset(JEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ JEngine::ShaderDataType::Float3, "a_Position" }
-			});
+			{ JEngine::ShaderDataType::Float3, "a_Position" },
+			{ JEngine::ShaderDataType::Float2, "a_TexCoord" }
+		});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
@@ -97,7 +98,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(JEngine::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = JEngine::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string vertexSrc2 = R"(
 			#version 330 core
@@ -131,7 +132,15 @@ public:
 			}
 		)";
 
-		m_Shader2.reset(JEngine::Shader::Create(vertexSrc2, fragmentSrc2));
+		m_Shader2 = JEngine::Shader::Create("FlatColor", vertexSrc2, fragmentSrc2);
+
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+
+		m_Texture = JEngine::Texture2D::Create("assets/textures/misato_bread.png");
+		m_Transparent_Texture = JEngine::Texture2D::Create("assets/textures/sadness.png");
+
+		std::dynamic_pointer_cast<JEngine::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<JEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(JEngine::Timestep deltaTime) override
@@ -175,7 +184,15 @@ public:
 			}
 		}
 
-		JEngine::Renderer::Submit(m_Shader, m_VertexArray);
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
+		m_Texture->Bind();
+		JEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0), glm::vec3(1.5f)));
+		m_Transparent_Texture->Bind();
+		JEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0), glm::vec3(1.5f)));
+
+		//Triangle
+		//JEngine::Renderer::Submit(m_Shader, m_VertexArray);
 
 		JEngine::Renderer::EndScene();
 	}
@@ -192,11 +209,14 @@ public:
 	}
 
 private:
+	JEngine::ShaderLibrary m_ShaderLibrary;
 	JEngine::Ref<JEngine::Shader> m_Shader;
 	JEngine::Ref<JEngine::VertexArray> m_VertexArray;
 
 	JEngine::Ref<JEngine::Shader> m_Shader2;
 	JEngine::Ref<JEngine::VertexArray> m_SquareVA;
+
+	JEngine::Ref<JEngine::Texture2D> m_Texture, m_Transparent_Texture;
 
 	JEngine::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

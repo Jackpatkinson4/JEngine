@@ -3,16 +3,22 @@
 #include "JEngine/Renderer/Shader.h"
 #include <glm/glm.hpp>
 
+// TODO: Remove
+typedef unsigned int GLenum;
+
 namespace JEngine {
 
 	class OpenGLShader : public Shader
 	{
 	public:
-		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& path);
+		OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 		virtual ~OpenGLShader();
 
 		void Bind() const override;
 		void Unbind() const override;
+
+		virtual const std::string GetName() const override { return m_Name; }
 
 		void UploadUniformInt(const std::string& name, int value);
 
@@ -24,6 +30,11 @@ namespace JEngine {
 		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 	private:
+		std::string ReadFile(const std::string& path);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& src);
+		void Compile(std::unordered_map<GLenum, std::string>& shaderSrcs);
+	private:
 		uint32_t m_RendererID;
+		std::string m_Name;
 	};
 }
