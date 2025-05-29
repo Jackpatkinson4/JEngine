@@ -1,7 +1,7 @@
 #include "jepch.h"
 #include "WindowsInput.h"
 
-#include "JEngine/Application.h"
+#include "JEngine/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 

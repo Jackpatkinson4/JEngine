@@ -3,7 +3,7 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "JEngine/LayerStack.h"
+#include "JEngine/Core/LayerStack.h"
 #include "JEngine/Events/Event.h"
 #include "JEngine/Events/ApplicationEvent.h"
 
@@ -31,10 +31,12 @@ namespace JEngine {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 	private:
 		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
+		bool m_Minimized = false;
 		LayerStack m_LayerStack;
 		Timestep m_Timestep;
 		float m_LastFrameTime = 0.0f;

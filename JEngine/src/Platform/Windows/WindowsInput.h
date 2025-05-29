@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JEngine/Input.h"
+#include "JEngine/Core/Input.h"
 
 namespace JEngine {
 

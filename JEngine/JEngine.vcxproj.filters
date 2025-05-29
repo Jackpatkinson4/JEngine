@@ -57,17 +57,38 @@
     <ClInclude Include="src\JEngine.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\JEngine\Application.h">
-      <Filter>src\JEngine</Filter>
+    <ClInclude Include="src\JEngine\Core\Application.h">
+      <Filter>src\JEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\JEngine\Core.h">
-      <Filter>src\JEngine</Filter>
+    <ClInclude Include="src\JEngine\Core\Core.h">
+      <Filter>src\JEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Core\EntryPoint.h">
+      <Filter>src\JEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Core\Input.h">
+      <Filter>src\JEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Core\KeyCodes.h">
+      <Filter>src\JEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Core\Layer.h">
+      <Filter>src\JEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Core\LayerStack.h">
+      <Filter>src\JEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Core\Log.h">
+      <Filter>src\JEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Core\MouseButtonCodes.h">
+      <Filter>src\JEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\JEngine\Core\Timestep.h">
       <Filter>src\JEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\JEngine\EntryPoint.h">
-      <Filter>src\JEngine</Filter>
+    <ClInclude Include="src\JEngine\Core\Window.h">
+      <Filter>src\JEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\JEngine\Events\ApplicationEvent.h">
       <Filter>src\JEngine\Events</Filter>
@@ -84,24 +105,6 @@
     <ClInclude Include="src\JEngine\ImGui\ImGuiLayer.h">
       <Filter>src\JEngine\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\JEngine\Input.h">
-      <Filter>src\JEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\JEngine\KeyCodes.h">
-      <Filter>src\JEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\JEngine\Layer.h">
-      <Filter>src\JEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\JEngine\LayerStack.h">
-      <Filter>src\JEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\JEngine\Log.h">
-      <Filter>src\JEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\JEngine\MouseButtonCodes.h">
-      <Filter>src\JEngine</Filter>
-    </ClInclude>
     <ClInclude Include="src\JEngine\Renderer\Buffer.h">
       <Filter>src\JEngine\Renderer</Filter>
     </ClInclude>
@@ -109,6 +112,9 @@
       <Filter>src\JEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\JEngine\Renderer\OrthographicCamera.h">
+      <Filter>src\JEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JEngine\Renderer\OrthographicCameraController.h">
       <Filter>src\JEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\JEngine\Renderer\RenderCommand.h">
@@ -128,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="src\JEngine\Renderer\VertexArray.h">
       <Filter>src\JEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\JEngine\Window.h">
-      <Filter>src\JEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1418,8 +1421,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\JEngine\Application.cpp">
-      <Filter>src\JEngine</Filter>
+    <ClCompile Include="src\JEngine\Core\Application.cpp">
+      <Filter>src\JEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JEngine\Core\Layer.cpp">
+      <Filter>src\JEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JEngine\Core\LayerStack.cpp">
+      <Filter>src\JEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JEngine\Core\Log.cpp">
+      <Filter>src\JEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\JEngine\ImGui\ImGuiBuild.cpp">
       <Filter>src\JEngine\ImGui</Filter>
@@ -1427,19 +1439,13 @@
     <ClCompile Include="src\JEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\JEngine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\JEngine\Layer.cpp">
-      <Filter>src\JEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\JEngine\LayerStack.cpp">
-      <Filter>src\JEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\JEngine\Log.cpp">
-      <Filter>src\JEngine</Filter>
-    </ClCompile>
     <ClCompile Include="src\JEngine\Renderer\Buffer.cpp">
       <Filter>src\JEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\JEngine\Renderer\OrthographicCamera.cpp">
+      <Filter>src\JEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JEngine\Renderer\OrthographicCameraController.cpp">
       <Filter>src\JEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\JEngine\Renderer\RenderCommand.cpp">

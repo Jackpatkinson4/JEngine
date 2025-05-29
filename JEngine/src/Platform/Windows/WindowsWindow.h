@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JEngine/Window.h"
+#include "JEngine/Core/Window.h"
 #include "JEngine/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

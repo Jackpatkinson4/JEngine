@@ -2,16 +2,16 @@
 
 // For use by JEngine applications
 
-#include "JEngine/Core.h"
-#include "JEngine/Application.h"
-#include "JEngine/Layer.h"
-#include "JEngine/Log.h"
+#include "JEngine/Core/Core.h"
+#include "JEngine/Core/Application.h"
+#include "JEngine/Core/Layer.h"
+#include "JEngine/Core/Log.h"
 
 #include "JEngine/Core/Timestep.h"
 
-#include "JEngine/Input.h"
-#include "JEngine/KeyCodes.h"
-#include "JEngine/MouseButtonCodes.h"
+#include "JEngine/Core/Input.h"
+#include "JEngine/Core/KeyCodes.h"
+#include "JEngine/Core/MouseButtonCodes.h"
 
 #include "JEngine/ImGui/ImGuiLayer.h"
 
@@ -25,8 +25,9 @@
 #include "JEngine/Renderer/VertexArray.h"
 
 #include "JEngine/Renderer/OrthographicCamera.h"
+#include "JEngine/Renderer/OrthographicCameraController.h"
 // -----------------------
 
 // ------Entry Point------
-#include "JEngine/EntryPoint.h"
+#include "JEngine/Core/EntryPoint.h"
 // -----------------------

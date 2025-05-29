@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "JEngine/Log.h"
+#include "JEngine/Core/Log.h"
 
 #ifdef JE_PLATFORM_WINDOWS
 	#include <Windows.h>

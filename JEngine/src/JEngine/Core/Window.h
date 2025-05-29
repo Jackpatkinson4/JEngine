@@ -2,7 +2,7 @@
 
 #include "jepch.h"
 
-#include "JEngine/Core.h"
+#include "JEngine/Core/Core.h"
 #include "JEngine/Events/Event.h"
 
 namespace JEngine {

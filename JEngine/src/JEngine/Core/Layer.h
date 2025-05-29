@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JEngine/Core.h"
+#include "JEngine/Core/Core.h"
 #include "JEngine/Core/Timestep.h"
 #include "JEngine/Events/Event.h"
 

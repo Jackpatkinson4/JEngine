@@ -12,7 +12,7 @@ class ExampleLayer : public JEngine::Layer
 {
 public:
 	ExampleLayer() 
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
 	{
 		// Vertex Array
 		m_VertexArray.reset(JEngine::VertexArray::Create());
@@ -145,29 +145,14 @@ public:
 
 	void OnUpdate(JEngine::Timestep deltaTime) override
 	{
+		// Update
+		m_CameraController.OnUpdate(deltaTime);
 
-		if (JEngine::Input::IsKeyPressed(JE_KEY_A) || JEngine::Input::IsKeyPressed(JE_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * deltaTime;
-		else if (JEngine::Input::IsKeyPressed(JE_KEY_D) || JEngine::Input::IsKeyPressed(JE_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * deltaTime;
-
-		if (JEngine::Input::IsKeyPressed(JE_KEY_S) || JEngine::Input::IsKeyPressed(JE_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * deltaTime;
-		else if (JEngine::Input::IsKeyPressed(JE_KEY_W) || JEngine::Input::IsKeyPressed(JE_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * deltaTime;
-
-		if (JEngine::Input::IsKeyPressed(JE_KEY_Z))
-			m_CameraRotation += m_CameraRotationSpeed * deltaTime;
-		else if (JEngine::Input::IsKeyPressed(JE_KEY_X))
-			m_CameraRotation -= m_CameraRotationSpeed * deltaTime;
-
+		// Render
 		JEngine::RenderCommand::SetClearColor({ 0.2f, 0.2f, 0.2f, 0.2f });
 		JEngine::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		JEngine::Renderer::BeginScene(m_Camera);
+		JEngine::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.1f));
 
@@ -204,8 +189,9 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(JEngine::Event& event) override
+	void OnEvent(JEngine::Event& e) override
 	{
+		m_CameraController.OnEvent(e);
 	}
 
 private:
@@ -218,12 +204,7 @@ private:
 
 	JEngine::Ref<JEngine::Texture2D> m_Texture, m_Transparent_Texture;
 
-	JEngine::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 2.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 90.0f;
+	JEngine::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor = { 0.2, 0.3, 0.8 };
 };

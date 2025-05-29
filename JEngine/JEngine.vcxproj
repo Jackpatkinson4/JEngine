@@ -141,31 +141,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\JEngine.h" />
-    <ClInclude Include="src\JEngine\Application.h" />
-    <ClInclude Include="src\JEngine\Core.h" />
+    <ClInclude Include="src\JEngine\Core\Application.h" />
+    <ClInclude Include="src\JEngine\Core\Core.h" />
+    <ClInclude Include="src\JEngine\Core\EntryPoint.h" />
+    <ClInclude Include="src\JEngine\Core\Input.h" />
+    <ClInclude Include="src\JEngine\Core\KeyCodes.h" />
+    <ClInclude Include="src\JEngine\Core\Layer.h" />
+    <ClInclude Include="src\JEngine\Core\LayerStack.h" />
+    <ClInclude Include="src\JEngine\Core\Log.h" />
+    <ClInclude Include="src\JEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\JEngine\Core\Timestep.h" />
-    <ClInclude Include="src\JEngine\EntryPoint.h" />
+    <ClInclude Include="src\JEngine\Core\Window.h" />
     <ClInclude Include="src\JEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\JEngine\Events\Event.h" />
     <ClInclude Include="src\JEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\JEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\JEngine\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\JEngine\Input.h" />
-    <ClInclude Include="src\JEngine\KeyCodes.h" />
-    <ClInclude Include="src\JEngine\Layer.h" />
-    <ClInclude Include="src\JEngine\LayerStack.h" />
-    <ClInclude Include="src\JEngine\Log.h" />
-    <ClInclude Include="src\JEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\JEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\JEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\JEngine\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\JEngine\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\JEngine\Renderer\RenderCommand.h" />
     <ClInclude Include="src\JEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\JEngine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\JEngine\Renderer\Shader.h" />
     <ClInclude Include="src\JEngine\Renderer\Texture.h" />
     <ClInclude Include="src\JEngine\Renderer\VertexArray.h" />
-    <ClInclude Include="src\JEngine\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -596,14 +597,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\JEngine\Application.cpp" />
+    <ClCompile Include="src\JEngine\Core\Application.cpp" />
+    <ClCompile Include="src\JEngine\Core\Layer.cpp" />
+    <ClCompile Include="src\JEngine\Core\LayerStack.cpp" />
+    <ClCompile Include="src\JEngine\Core\Log.cpp" />
     <ClCompile Include="src\JEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\JEngine\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\JEngine\Layer.cpp" />
-    <ClCompile Include="src\JEngine\LayerStack.cpp" />
-    <ClCompile Include="src\JEngine\Log.cpp" />
     <ClCompile Include="src\JEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\JEngine\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\JEngine\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\JEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\JEngine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\JEngine\Renderer\RendererAPI.cpp" />

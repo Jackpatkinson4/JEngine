@@ -36,7 +36,7 @@ namespace JEngine {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		JE_CORE_INFO("Creeating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		JE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 		if (!s_GLFWInitialized)
 		{

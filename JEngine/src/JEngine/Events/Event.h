@@ -1,7 +1,7 @@
 #pragma once
 
 #include "jepch.h"
-#include "JEngine/Core.h"
+#include "JEngine/Core/Core.h"
 
 namespace JEngine {
 	enum class EventType

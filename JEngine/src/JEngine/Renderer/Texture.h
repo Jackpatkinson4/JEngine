@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "JEngine/Core.h"
+#include "JEngine/Core/Core.h"
 
 namespace JEngine {
 
