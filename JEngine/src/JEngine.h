@@ -17,6 +17,7 @@
 
 // ------Renderer---------
 #include "JEngine/Renderer/Renderer.h"
+#include "JEngine/Renderer/Renderer2D.h"
 #include "JEngine/Renderer/RenderCommand.h"
 
 #include "JEngine/Renderer/Buffer.h"
