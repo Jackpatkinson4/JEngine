@@ -1,4 +1,5 @@
 #include <JEngine.h>
+#include <JEngine/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -8,6 +9,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public JEngine::Layer
 {
 public:
@@ -15,7 +18,7 @@ public:
 		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
 	{
 		// Vertex Array
-		m_VertexArray.reset(JEngine::VertexArray::Create());
+		m_VertexArray = JEngine::VertexArray::Create();
 
 		// Vertex Buffer
 		float vertices[3 * 7] = {
@@ -40,7 +43,7 @@ public:
 		indexBuffer.reset(JEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(JEngine::VertexArray::Create());
+		m_SquareVA = JEngine::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -214,7 +217,8 @@ class Sandbox : public JEngine::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()

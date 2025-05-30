@@ -27,7 +27,3 @@
 #include "JEngine/Renderer/OrthographicCamera.h"
 #include "JEngine/Renderer/OrthographicCameraController.h"
 // -----------------------
-
-// ------Entry Point------
-#include "JEngine/Core/EntryPoint.h"
-// -----------------------
