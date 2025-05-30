@@ -12,6 +12,7 @@ namespace JEngine {
 	{
 	public:
 		ImGuiLayer();
+		ImGuiLayer(bool show);
 		~ImGuiLayer();
 
 		virtual void OnAttach() override;
@@ -22,5 +23,6 @@ namespace JEngine {
 		void End();
 	private:
 		float m_Time = 0.0f;
+		bool m_Show = false;
 	};
 }

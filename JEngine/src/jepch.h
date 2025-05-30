@@ -14,6 +14,8 @@
 
 #include "JEngine/Core/Log.h"
 
+#include "JEngine/Debug/Instrumentor.h"
+
 #ifdef JE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

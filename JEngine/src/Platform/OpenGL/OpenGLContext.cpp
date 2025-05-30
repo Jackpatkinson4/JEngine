@@ -13,6 +13,8 @@ namespace JEngine {
 
 	void OpenGLContext::Init()
 	{
+		JE_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_Window);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		JE_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -25,6 +27,8 @@ namespace JEngine {
 
 	void OpenGLContext::SwapBuffers()
 	{
+		JE_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_Window);
 	}
 };

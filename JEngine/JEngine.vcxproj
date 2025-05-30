@@ -152,6 +152,7 @@
     <ClInclude Include="src\JEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\JEngine\Core\Timestep.h" />
     <ClInclude Include="src\JEngine\Core\Window.h" />
+    <ClInclude Include="src\JEngine\Debug\Instrumentor.h" />
     <ClInclude Include="src\JEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\JEngine\Events\Event.h" />
     <ClInclude Include="src\JEngine\Events\KeyEvent.h" />

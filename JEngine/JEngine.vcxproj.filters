@@ -1420,6 +1420,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\JEngine\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\JEngine\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\JEngine\Core\Application.cpp">

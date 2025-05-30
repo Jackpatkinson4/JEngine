@@ -20,6 +20,8 @@ namespace JEngine {
 
 	void Renderer2D::Init()
 	{
+		JE_PROFILE_FUNCTION();
+
 		s_Data = new Renderer2DStorage();
 		s_Data->vertexArray = VertexArray::Create();
 
@@ -56,28 +58,33 @@ namespace JEngine {
 
 	void Renderer2D::Shutdown()
 	{
+		JE_PROFILE_FUNCTION();
+
 		delete s_Data;
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
+		JE_PROFILE_FUNCTION();
+
 		s_Data->textureShader->Bind();
 		s_Data->textureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
 	void Renderer2D::EndScene()
 	{
-
+		JE_PROFILE_FUNCTION();
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		DrawQuad({ position.x, position.y, 0.0f }, size, color);
-
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
+		JE_PROFILE_FUNCTION();
+
 		s_Data->textureShader->SetFloat4("u_Color", color);
 		s_Data->baseTexture->Bind();
 
@@ -105,6 +112,8 @@ namespace JEngine {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& color)
 	{
+		JE_PROFILE_FUNCTION();
+
 		s_Data->textureShader->SetFloat4("u_Color", color);
 		texture->Bind();
 

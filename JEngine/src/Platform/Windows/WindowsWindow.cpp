@@ -23,15 +23,21 @@ namespace JEngine {
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		JE_PROFILE_FUNCTION();
+
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+		JE_PROFILE_FUNCTION();
+		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		JE_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
@@ -41,13 +47,17 @@ namespace JEngine {
 		if (!s_GLFWInitialized)
 		{
 			// TODO: glfwTerminate on system shutdown
+			JE_PROFILE_SCOPE("glfwInit");
 			int success = glfwInit();
 			JE_CORE_ASSERT(success, "Could not intiialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
 
-		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		{
+			JE_PROFILE_SCOPE("glfwCreateWindow");
+			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		}
 
 		m_Context = new OpenGLContext(m_Window);
 		m_Context->Init();
@@ -147,17 +157,23 @@ namespace JEngine {
 
 	void WindowsWindow::Shutdown()
 	{
+		JE_PROFILE_FUNCTION();
+
 		glfwDestroyWindow(m_Window);
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
+		JE_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		JE_PROFILE_FUNCTION();
+
 		if (enabled)
 			glfwSwapInterval(1);
 		else
