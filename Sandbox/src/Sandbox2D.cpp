@@ -42,8 +42,8 @@ void Sandbox2D::OnUpdate(JEngine::Timestep deltaTime)
 		JE_PROFILE_SCOPE("Renderer Draw");
 		JEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-		JEngine::Renderer2D::DrawQuad({ 1.0f, 1.0f }, { 1.0f, 1.0f }, m_SquareColor);
-		JEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture, m_TextureBlendColor);
+		JEngine::Renderer2D::DrawRotatedQuad({ 1.0f, 1.0f }, { 1.0f, 1.0f }, glm::radians(45.0f), m_SquareColor);
+		JEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture, 10.0f, m_TextureBlendColor);
 
 		JEngine::Renderer::EndScene();
 	}
