@@ -23,6 +23,7 @@ private:
 	JEngine::Ref<JEngine::Shader> m_Shader;
 
 	JEngine::Ref<JEngine::Texture2D> m_Texture;
+	JEngine::Ref<JEngine::Texture2D> m_TransparentTexture;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 	glm::vec4 m_TextureBlendColor = { 1.0f, 1.0f, 1.0f, 1.0f };
