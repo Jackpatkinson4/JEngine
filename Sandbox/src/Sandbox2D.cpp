@@ -15,6 +15,10 @@ void Sandbox2D::OnAttach()
 
 	m_Texture = JEngine::Texture2D::Create("assets/textures/misato_bread.png");
 	m_TransparentTexture = JEngine::Texture2D::Create("assets/textures/sadness.png");
+	m_TileMap = JEngine::Texture2D::Create("assets/textures/mainlev_build.png");
+
+	m_RockTexture = JEngine::SubTexture2D::CreateFromCoords(m_TileMap, { 6.0f, 48.0f }, { 16.0f, 16.0f });
+	m_ScaffoldTexture = JEngine::SubTexture2D::CreateFromCoords(m_TileMap, { 55.0f, 55.0f }, { 16.0f, 16.0f }, { 3.0f, 3.0f });
 }
 
 void Sandbox2D::OnDetach()
@@ -46,21 +50,28 @@ void Sandbox2D::OnUpdate(JEngine::Timestep deltaTime)
 		rotation += deltaTime * 50.0f;
 
 		JEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		JEngine::Renderer2D::DrawQuad({ 1.5f, 0.0f }, { 1.0f, 1.0f }, m_SquareColor);
-		JEngine::Renderer2D::DrawRotatedQuad({ -1.5f, -0.5f }, { 0.5f, 0.75f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
-		JEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1 }, { 20.0f, 20.0f }, m_TransparentTexture, 10.f);
-		JEngine::Renderer2D::DrawRotatedQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_Texture, 1.0f, m_TextureBlendColor);
+		//JEngine::Renderer2D::DrawQuad({ 1.5f, 0.0f }, { 1.0f, 1.0f }, m_SquareColor);
+		//JEngine::Renderer2D::DrawRotatedQuad({ -1.5f, -0.5f }, { 0.5f, 0.75f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
+		//JEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1 }, { 20.0f, 20.0f }, m_TransparentTexture, 10.f);
+		//JEngine::Renderer2D::DrawRotatedQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_Texture, 1.0f, m_TextureBlendColor);
 		//JEngine::Renderer2D::EndScene();
 
 		//JEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		for (float y = -5.0f; y < 5.0f; y += 0.5f)
+		//for (float y = -5.0f; y < 5.0f; y += 0.5f)
+		//{
+		//	for (float x = -5.0f; x < 5.0f; x += 0.5f)
+		//	{
+		//		glm::vec4 color = { (x + 5.0f) / 10.0f, 0.5f, (x + 5.0f) / 10.0f, 0.5f };
+		//		JEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
+		//	}
+		//}
+
+		for (int i = -10; i < 10; i++)
 		{
-			for (float x = -5.0f; x < 5.0f; x += 0.5f)
-			{
-				glm::vec4 color = { (x + 5.0f) / 10.0f, 0.5f, (x + 5.0f) / 10.0f, 0.5f };
-				JEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
-			}
+			JEngine::Renderer2D::DrawQuad({ i, 0.0f }, { 1.0f, 1.0f }, m_RockTexture);
 		}
+		JEngine::Renderer2D::DrawQuad({ 1.0f, 2.0f }, { 3.0f, 3.0f }, m_ScaffoldTexture);
+
 		JEngine::Renderer2D::EndScene();
 	}
 }

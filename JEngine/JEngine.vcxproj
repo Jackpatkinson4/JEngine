@@ -167,6 +167,7 @@
     <ClInclude Include="src\JEngine\Renderer\Renderer2D.h" />
     <ClInclude Include="src\JEngine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\JEngine\Renderer\Shader.h" />
+    <ClInclude Include="src\JEngine\Renderer\SubTexture2D.h" />
     <ClInclude Include="src\JEngine\Renderer\Texture.h" />
     <ClInclude Include="src\JEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
@@ -613,6 +614,7 @@
     <ClCompile Include="src\JEngine\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\JEngine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\JEngine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\JEngine\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\JEngine\Renderer\Texture.cpp" />
     <ClCompile Include="src\JEngine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />

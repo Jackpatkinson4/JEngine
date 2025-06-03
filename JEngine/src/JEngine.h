@@ -23,6 +23,7 @@
 #include "JEngine/Renderer/Buffer.h"
 #include "JEngine/Renderer/Shader.h"
 #include "JEngine/Renderer/Texture.h"
+#include "JEngine/Renderer/SubTexture2D.h"
 #include "JEngine/Renderer/VertexArray.h"
 
 #include "JEngine/Renderer/OrthographicCamera.h"
