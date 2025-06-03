@@ -4,7 +4,8 @@
 #include "JEngine/Core/Log.h"
 #include "JEngine/Renderer/Renderer.h"
 
-#include "Input.h"
+#include "JEngine/Core/Input.h"
+#include "JEngine/Core/KeyCodes.h"
 
 #include <GLFW/glfw3.h>
 
@@ -100,7 +101,14 @@ namespace JEngine {
 				m_ImGuiLayer->End();
 			}
 
-			m_Window->OnUpdate();
+			if (Input::IsKeyPressed(JE_KEY_ESCAPE))
+			{
+				m_Running = false;
+			}
+			else
+			{
+				m_Window->OnUpdate();
+			}
 		}
 	}
 
