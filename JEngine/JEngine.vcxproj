@@ -159,6 +159,7 @@
     <ClInclude Include="src\JEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\JEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\JEngine\Renderer\Buffer.h" />
+    <ClInclude Include="src\JEngine\Renderer\Framebuffer.h" />
     <ClInclude Include="src\JEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\JEngine\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\JEngine\Renderer\OrthographicCameraController.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="src\JEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
@@ -607,6 +609,7 @@
     <ClCompile Include="src\JEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\JEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\JEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\JEngine\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\JEngine\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\JEngine\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\JEngine\Renderer\RenderCommand.cpp" />
@@ -619,6 +622,7 @@
     <ClCompile Include="src\JEngine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />

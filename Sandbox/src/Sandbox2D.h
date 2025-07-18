@@ -21,6 +21,7 @@ private:
 	// Temp
 	JEngine::Ref<JEngine::VertexArray> m_VertexArray;
 	JEngine::Ref<JEngine::Shader> m_Shader;
+	JEngine::Ref<JEngine::Framebuffer> m_Framebuffer;
 
 	JEngine::Ref<JEngine::Texture2D> m_Texture;
 	JEngine::Ref<JEngine::Texture2D> m_TransparentTexture;
@@ -30,4 +31,7 @@ private:
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 	glm::vec4 m_TextureBlendColor = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+	uint32_t m_MapWidth, m_MapHeight;
+	std::unordered_map<char, JEngine::Ref<JEngine::SubTexture2D>> m_TextureMap;
 };

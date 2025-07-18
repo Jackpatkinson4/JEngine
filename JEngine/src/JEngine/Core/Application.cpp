@@ -54,6 +54,11 @@ namespace JEngine {
 		layer->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		JE_PROFILE_FUNCTION();

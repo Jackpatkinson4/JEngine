@@ -22,9 +22,11 @@ IncludeDir["ImGui"] = "JEngine/vendor/imgui"
 IncludeDir["glm"] = "JEngine/vendor/glm"
 IncludeDir["stb_image"] = "JEngine/vendor/stb_image"
 
-include "JEngine/vendor/GLFW"
-include "JEngine/vendor/Glad"
-include "JEngine/vendor/imgui"
+group "Dependencies"
+	include "JEngine/vendor/GLFW"
+	include "JEngine/vendor/Glad"
+	include "JEngine/vendor/imgui"
+group ""
 
 project "JEngine"
 	location "JEngine"
@@ -66,7 +68,7 @@ project "JEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
 	}
 
 	links
@@ -128,7 +130,7 @@ project "Sandbox"
 		"JEngine/vendor/spdlog/include",
 		"JEngine/src",
 		"JEngine/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
 	}
 
 	links 

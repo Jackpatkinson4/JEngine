@@ -10,3 +10,6 @@
 [submodule "JEngine/vendor/glm"]
 	path = JEngine/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "JEngine/vendor/tinytmx"]
+	path = JEngine/vendor/tinytmx
+	url = https://github.com/KaseyJenkins/tinytmx.git
